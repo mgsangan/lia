@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>For LIA 💕</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom right, #ffe4e9, #fddde6);
+      color: #4a2c2a;
+      margin: 0;
+      padding: 20px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      font-family: 'Brush Script MT', cursive;
+      text-align: center;
+      color: #e91e63;
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+
+    #start-button {
+      display: block;
+      margin: 40px auto;
+      padding: 14px 28px;
+      font-size: 18px;
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+      transition: background-color 0.3s;
+    }
+
+    #start-button:hover {
+      background-color: #e91e63;
+    }
+
+    #message-container {
+      max-width: 900px;
+      margin: 0 auto 60px;
+      padding: 24px;
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border-radius: 20px;
+      display: none;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out;
+    }
+
+    #typewriter {
+      font-size: 1.2em;
+      line-height: 1.8;
+      white-space: pre-line;
+      border-right: 2px solid #e91e63;
+      overflow: hidden;
+      animation: blink 0.75s step-end infinite;
+      min-height: 400px;
+      text-align: left;
+      padding: 0 10px;
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    .signature {
+      font-family: 'Brush Script MT', cursive;
+      text-align: right;
+      margin-top: 40px;
+      color: #e91e63;
+      font-size: 1.5em;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2em;
+      }
+
+      #typewriter {
+        font-size: 1em;
+      }
+
+      .signature {
+        font-size: 1.2em;
+      }
+    }
+
+    /* Floating hearts animation */
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Heart_corazón.svg/1024px-Heart_corazón.svg.png') no-repeat center;
+      background-size: contain;
+      animation: float 8s infinite ease-in-out;
+      opacity: 0.6;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-100px) scale(1.2); }
+      100% { transform: translateY(0) scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Music -->
+  <audio id="bg-music" loop>
+    <source src="Kahit Maputi Na Ang Buhok Ko - Moira Dela Torre  The Hows of Us OST (Music Video).mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Floating Hearts -->
+  <div class="heart" style="top:10%; left:5%; animation-delay:0s;"></div>
+  <div class="heart" style="top:20%; left:80%; animation-delay:2s;"></div>
+  <div class="heart" style="top:30%; left:40%; animation-delay:4s;"></div>
+  <div class="heart" style="top:50%; left:70%; animation-delay:6s;"></div>
+
+  <!-- Start Button -->
+  <button id="start-button" onclick="startSite()">Click here, LIA 💗</button>
+
+  <!-- Message Container -->
+  <div id="message-container">
+    <h1>My LIA,</h1>
+    <div id="typewriter"></div>
+    <div class="signature">— MARK S.</div>
+  </div>
+
+<script>
+  const fullMessage = `
+
+I just want to be honest with you. I like you, and that feeling grows stronger every day. I know that right now, I still need to wait until the time comes na payagan ako mangligaw, and I want you to know that I’m willing to wait patiently, no matter how long it takes.
+
+My love for you isn’t about rushing things or forcing anything—it’s about respecting you, your family, and the right time. I’ll use this waiting period to prove my sincerity, to show you that my intentions are true, and that I’m serious about you.
+
+You’re very important to me, and I want you to feel secure knowing that I’ll be here, holding on, until the day comes when I can finally express my love openly and properly. Until then, I’ll continue to care for you quietly, with respect and patience, because you’re worth every moment of waiting.
+`;
+
+  function typeText(text, index = 0) {
+    if (index <= text.length) {
+      document.getElementById("typewriter").innerText = text.slice(0, index);
+      setTimeout(() => typeText(text, index + 1), 80); // Typing speed: 80ms
+    }
+  }
+
+  function startSite() {
+    const music = document.getElementById('bg-music');
+    const message = document.getElementById('message-container');
+    const button = document.getElementById('start-button');
+
+    music.play().then(() => {
+      message.style.display = 'block';
+      setTimeout(() => {
+        message.style.opacity = '1';
+      }, 100);
+
+      button.style.display = 'none';
+
+      // Delay typing by 10 seconds (10000 ms)
+      setTimeout(() => {
+        typeText(fullMessage);
+      }, 10000);
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }).catch(err => {
+      alert("Music failed to play. Please tap the screen or allow autoplay.");
+    });
+  }
+</script>
+
+</body>
+</html>
